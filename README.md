@@ -8,7 +8,7 @@ A sample application demonstrating how to instrument an IBM MobileFirst applicat
 1. From a command-line window, navigate to the project's root folder and run the commands:
   - Add a platform: `cordova platform add`
   - Register the application: `mfpdev app register`
-2. Use either Maven, MobileFirst CLI or your IDE of choice to build and deploy the available [`MobileFirstBankAdapter`](https://github.com/MobileFirst-Platform-Developer-Center/MobileFirstBankAdapter/tree/release80) and []`MobileFirstBankAuthAdapter`](https://github.com/MobileFirst-Platform-Developer-Center/MobileFirstBankAuthAdapter/tree/release80) adapters.
+2. Use either Maven, MobileFirst CLI or your IDE of choice to build and deploy the available [`MobileFirstBankAdapter`](https://github.com/MobileFirst-Platform-Developer-Center/MobileFirstBankAdapter/tree/release80) and [`MobileFirstBankAuthAdapter`](https://github.com/MobileFirst-Platform-Developer-Center/MobileFirstBankAuthAdapter/tree/release80) adapters.
 3. In the MobileFirst console, under **Applications** → **MobileFirstBank** → **Security** → **Map scope elements to security checks**, add a mapping from `restricted` to `MobileFirstBankUserLogin`.
 4. Back in the command-line, run the Cordova application by running the `cordova run` command.
 
