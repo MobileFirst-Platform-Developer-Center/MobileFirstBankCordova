@@ -1,0 +1,616 @@
+/*
+ *  © Copyright 2016 IBM Corp.
+ *
+ *  Licensed under the Apache License, Version 2.0 (the "License");
+ *  you may not use this file except in compliance with the License.
+ *  You may obtain a copy of the License at
+ *
+ *      http://www.apache.org/licenses/LICENSE-2.0
+ *
+ *  Unless required by applicable law or agreed to in writing, software
+ *  distributed under the License is distributed on an "AS IS" BASIS,
+ *  WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+ *  See the License for the specific language governing permissions and
+ *  limitations under the License.
+ */
+* {
+	margin: 0;
+	padding: 0;
+
+	/* Disable selection/copy in UIWebView */
+	-webkit-touch-callout: none;
+	-webkit-user-select: none;
+
+	box-sizing: border-box;
+}
+
+html, body {
+	font-family: 'Helvetica', 'HelveticaNeue-Light', 'Helvetica Neue Light', 'Helvetica Neue', 'Arial', 'Lucida Grande', sans-serif;
+	background-color: #FFFFFF !important;
+	margin: 0;
+	padding: 0;
+	min-height: 100%;
+	height: 100%;
+	width: 100%;
+	position: fixed;
+	overflow: hidden;
+}
+
+.page {
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+	flex-flow: column;
+}
+
+.app-content {
+	flex: 1 1 auto;
+	display: flex;
+	flex-direction: column;
+	flex-flow: column;
+	overflow-y: auto;
+}
+
+.dashboard-menu-container {
+	flex: 1;
+}
+
+#app-page, #app-page > div {
+	height: 100%;
+}
+
+.dashboard-top {
+	min-height: 250px;
+	height: 35%;
+	padding: 0;
+	margin: 0;
+	background: #f9f9f9;
+}
+
+.dashboard-head {
+	padding: 12% 8% 5%;
+}
+
+.dashboard-head > h1 {
+	color: #00B3DA;
+}
+
+.dashboard-head > div {
+	font-size: 1.1em;
+}
+
+.dashboard-head > div.account-balance {
+	font-size: 2.0em;
+	line-height: 2.25em;
+}
+
+.menu-container.dashboard-menu {
+	border-top: 5px solid #85C555;
+	background-color: #00B3D9;
+	padding: 0;
+}
+
+.dashboard-triangle-crest {
+	width: 30px;
+	height: 15px;
+	display: block;
+	position: absolute;
+	top: -2px;
+	left: 50%;
+	margin-left: -15px;
+
+}
+
+/* ---- List Pages ---- */
+.item-list .item {
+	padding: 20px;
+	border-bottom: 1px solid #e3e4e6;
+	background-color: white;
+	min-height: 50px;
+	overflow: hidden;
+	margin: 0;
+	position: relative;
+}
+
+.item-list .item > span {
+	color: #72716e;
+	line-height: 25px;
+	display: block;
+	font-size: 1.1em;
+}
+
+.item-list .item .toggle-icon {
+	width: 40px;
+	height: 40px;
+	display: block;
+	position: absolute;
+	top: 25px;
+	right: 25px;
+	background: url("../images/dropdown-circle.png") no-repeat;
+	background-size: 40px 40px;
+}
+
+.item-list .item > .toggle-icon.close-icon {
+	background-image: url("../images/dropdown-close.png");
+}
+
+.item-list .item .account-name {
+	font-size: 1.1em;
+	font-weight: bold;
+	text-transform: capitalize;
+}
+
+.item-list .item .account-number {
+	font-size: 0.98em;
+	float: left;
+	font-weight: normal;
+}
+
+.item-list .item .account-balance {
+	font-size: 1.1em;
+	color: #00B3D9;
+	float: right;
+	margin-right: 78px;
+}
+
+.item-list .item > .transaction-amount {
+	position: absolute;
+	bottom: 20px;
+	right: 20px;
+	text-align: right;
+	font-size: 1.2em;
+}
+
+.item-list .item .transaction-icon {
+	width: 60px;
+	float: left;
+	margin-right: 15px;
+}
+
+.item-list .item > .transaction-account {
+	color: #808080;
+}
+
+.item-list .item > .transaction-date {
+	color: #666666;
+	font-weight: bold;
+}
+
+.item-list .context-menu {
+	border: 0;
+	box-shadow: none;
+	-webkit-box-shadow: none;
+	width: 100%;
+	height: 100%;
+	padding: 0;
+	background: #8dc044;
+	border-radius: 0;
+	overflow: hidden;
+	transition: 0.5s;
+}
+/*
+#drawer {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	background-color: rgba(1, 1, 1, 0.9);
+	transition: 0.5s;
+	z-index: 1;
+	visibility: hidden;
+}
+
+#drawer.open {
+	top: 0;
+	transition: 0.5s;
+	visibility: visible;
+}*/
+
+.item-list .context-menu > a {
+	display: block;
+	line-height: 40px;
+	padding: 0 15px;
+	border-bottom: 1px solid #9ed177;
+	color: #FFFFFF;
+	text-shadow: none;
+	text-decoration: none;
+}
+
+.item-list .item > .transaction-details {
+	color: #FFFFFF;
+	font-weight: bold;
+	width: 100%;
+	height: 100% !important;
+	padding: 5%;
+	background: #8dc044;
+	text-shadow: none;
+	position: absolute;
+	top: 0px;
+	left: 0;
+	display: none;
+	z-index: 100000000;
+}
+
+.item-list .item > .transaction-details > span {
+	width: 1000px;
+	display: block;
+	font-size: 1.1em;
+	line-height: 150%;
+	white-space: pre;
+}
+
+.app-toolbar app-button {
+	width: 20%;
+}
+
+app-button[active=true] {
+	/*height:100px;*/
+	/*background-color: #F00;*/
+}
+
+/* ------------ */
+/* start styles */
+/* ------------ */
+
+h1, h2, h3, h4, h5, h6 {
+	box-sizing: content-box;
+}
+
+.app-content > div {
+	flex: 1;
+	flex-direction: column;
+	display: flex;
+	overflow-y: scroll;
+}
+
+.app-content.has-nav {
+	padding-bottom: 62px;
+}
+
+.app-page {
+	overflow-y: hidden;
+}
+
+#menubar {
+	width: 100%;
+	height: 62px;
+	min-height: 62px;
+	background: #E7E7E7;
+	z-index: 100;
+	position: fixed;
+	bottom: 0;
+}
+
+#menu {
+	width: 46px;
+	height: 46px;
+	display: block;
+	margin: 8px auto;
+	background-image: url(../images/icons/menu.png);
+	background-size: 100%;
+}
+
+#drawer {
+	width: 100%;
+	height: 100%;
+	position: absolute;
+	top: 100%;
+	left: 0;
+	background-color: rgba(1, 1, 1, 0.9);
+	transition: 0.5s;
+	z-index: 1;
+	visibility: hidden;
+}
+
+#drawer.open {
+	top: 0;
+	transition: 0.5s;
+	visibility: visible;
+}
+
+.menu-container {
+	color: #FFFFFF;
+	position: relative;
+	height: 100%;
+	display: flex;
+	flex: 1;
+	flex-direction: row;
+	flex-wrap: wrap;
+	padding-bottom: 60px;
+}
+
+.menu-container app-button, .menu-container .app-button {
+	width: 50%;
+	border-left-width: 0;
+	border-top-width: 0;
+}
+
+app-button {
+	display: block;
+	text-align: center;
+	text-decoration: none;
+	color: #FFFFFF;
+	font-weight: normal;
+	text-shadow: none;
+	position: relative;
+}
+
+app-button a, app-button a:link, app-button a:link, app-button a:hover {
+	color: #FFFFFF;
+	text-decoration: none;
+}
+
+app-button a span {
+	white-space: pre;
+	padding-top: 10px;
+}
+
+app-button a img {
+	width: 50%;
+	display: block;
+	margin: 10px auto;
+}
+
+app-button a {
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translateX(-50%) translateY(-50%);
+}
+
+.menu-container app-button {
+	border: 0 solid rgba(255, 255, 255, 0.2);
+	border-right-width: 1px;
+	border-bottom-width: 1px;
+}
+
+#toolbar {
+	width: 100%;
+	height: 62px;
+	min-height: 62px;
+	background: #00B3D9;
+}
+
+#toolbar #back {
+	width: 18px;
+	text-decoration: none;
+	height: 18px;
+	margin: 22px 24px;
+	background-image: url(../images/back-arrow.png);
+	background-size: 100%;
+	float: left;
+}
+
+#toolbar > h1 {
+	padding: 6px 0 6px 16px;
+	height: 50px;
+	color: #FFF;
+	margin: 0;
+	line-height: 50px;
+	font-size: 18px;
+}
+
+#map-canvas {
+	flex: 1;
+}
+
+.form-container {
+	padding: 10px 20px;
+}
+
+.form-panel {
+	padding-top: 10px;
+}
+
+.form-panel > .field-wrapper {
+	border: 1px solid #485861;
+	border-radius: 2px;
+	margin-bottom: 20px;
+	min-width: 100%;
+	width: 100%;
+	margin-left: -2px;
+	background-color: #FFFFFF;
+
+}
+
+.form-panel > .field-wrapper:nth-last-child {
+	margin-bottom: 30px;
+}
+
+.form-panel label {
+	color: #3A4348;
+}
+
+.form-panel > .field-wrapper > .field {
+	margin: 5%;
+	min-width: 90%;
+	width: 90%;
+	position: relative;
+}
+
+.form-panel > .field-wrapper.full-field > .field > .input {
+	margin-left: 0;
+	width: 100%;
+	height: 100%;
+	min-width: 100%;
+}
+
+.form-panel > .field-wrapper.full-field.no-dropdown > .field > .input > * {
+	background-image: none;
+}
+
+.form-panel > .field-wrapper.full-field > .field > .input > * {
+	background-size: 15%;
+}
+
+.form-panel > .field-wrapper > .field > .label {
+	width: 40%;
+	font-weight: bold;
+	color: #818085;
+	float: left;
+}
+
+.form-panel > .field-wrapper > .field > .input {
+	margin-left: 40%;
+	width: 60%;
+	height: 100%;
+}
+
+.form-panel > .field-wrapper > .field > .input input, .form-panel > .field-wrapper > .field > .input select {
+	-webkit-appearance: none;
+	-moz-appearance: none;
+	appearance: none;
+	outline: none;
+	border: 0;
+	padding: 0;
+	margin: 0;
+	width: 100%;
+	background: none;
+	min-height: 20px;
+}
+
+.form-panel > .field-wrapper > .field > .input input.number-input, .form-panel > .field-wrapper > .field > .input input.standard-input {
+	background-image: none !important;
+}
+
+.form-panel > .field-wrapper > .field > .input input.dropdown, .form-panel > .field-wrapper > .field > .input select.dropdown {
+	background: url("../images/dropdown-arrow.png") no-repeat right center;
+	background-size: auto 100%;
+}
+
+.button {
+	border: 0 !important;
+	border-radius: 0 !important;
+	padding: 4% 0;
+	font-weight: bold;
+	text-shadow: none;
+	font-size: 1.2em;
+	text-align: center;
+	text-decoration: none;
+	text-shadow: none !important;
+}
+
+.button.btn-default {
+	color: #FFFFFF !important;
+	background-color: #85C555 !important;
+}
+
+.button.btn-gray {
+	color: #333;
+	background-color: #f6f6f6;
+	border: 1px solid #ddd !important;
+}
+
+.button.btn-large {
+	width: 100%;
+	display: block;
+}
+
+.app-page.page-secondary#PageCheckDeposit, .app-page.page-secondary#PageAppointment {
+	overflow-y: hidden;
+}
+
+.deposit-step#deposit-confirm {
+	height: 100%;
+}
+
+.deposit-step {
+	background-color: #FFF;
+	flex: 1;
+	flex-direction: column;
+	display: flex;
+}
+
+.deposit-step p {
+	padding: 15px 10px 15px;
+}
+
+.deposit-step .heading {
+	color: #72716e;
+	font-size: 1.25em;
+	line-height: 1.5em;
+	padding-bottom: 0;
+}
+
+.deposit-step .image-container {
+	margin-top: 10px;
+	background-color: black;
+	position: relative;
+	flex: 1;
+}
+
+.deposit-step .image-container .check-photo {
+	width: 200px;
+	height: 200px;
+	position: absolute;
+	margin: 50% 0 0 50%;
+	left: -100px;
+	top: -100px;
+}
+
+.deposit-step .check-preview-wrapper {
+	width: 90%;
+	padding: 2% 5%;
+}
+
+.deposit-step .check-preview-wrapper > .check-image-wrapper {
+	width: 40%;
+	margin: 0 5%;
+	display: block;
+	float: left;
+}
+
+.deposit-step .check-preview-wrapper > .check-image-wrapper > h4 {
+	text-align: center;
+}
+
+.deposit-step .check-preview-wrapper > .check-image-wrapper > img {
+	width: 100%;
+}
+
+.vertical-margin {
+	margin-bottom: 15px;
+}
+
+.appointment-details-body-panel {
+	font-size: 1.2em;
+	color: #ACACAC;
+	margin-bottom: 50px;
+}
+
+.red {
+	color:#f04e37!important;
+}
+.green {
+	color:#17AF4B!important;
+}
+.blue {
+	color:#00B3DA!important;
+}
+
+.login-logo-wrapper {
+	height: 200px;
+	background-color: #00B3D9;
+	text-align: center;
+}
+
+.login-logo-wrapper img {
+	height:80px;
+	margin:60px auto;
+}
+
+.login-form-wrapper {
+	background-image: url(../images/mountain-bg.png);
+	flex: 1;
+	background-size: 100%;
+	padding-top: 20px;
+}
+
+.login-form-wrapper input {
+	text-transform: lowercase;
+}
+
+.center {
+	text-align: center;
+}

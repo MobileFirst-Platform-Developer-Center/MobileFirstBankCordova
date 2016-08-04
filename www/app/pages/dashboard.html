@@ -1,0 +1,46 @@
+<!--
+    © Copyright 2016 IBM Corp.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+
+<div ng-controller="DashboardController">
+	<div class="dashboard-top">
+		<div class="dashboard-head">
+			<h1>Hello {{firstname}},</h1>
+			<div>Last Login: <span>{{lastLogin}}</span></div>
+			<div>Total Balance:</div>
+			<div class="account-balance"><strong>{{balance}}</strong></div>
+		</div>
+	</div>
+
+	<div class="dashboard-menu menu-container">
+
+		<app-button class="menu-button" href="#accounts" icon="dashboard/accounts" label="Accounts"></app-button>
+
+		<app-button class="menu-button" href="#transactions" icon="dashboard/transactions" label="Transactions"></app-button>
+
+		<app-button class="menu-button" href="#check-deposit" icon="dashboard/check-deposit" label="Check Deposit"></app-button>
+
+		<app-button class="menu-button" href="#find-atm" icon="dashboard/find-atm" label="Find ATM"></app-button>
+
+		<app-button class="menu-button" href="#appointments" icon="dashboard/appointments" label="Appointments"></app-button>
+
+		<app-button class="menu-button" href="#logout" icon="dashboard/logout" label="Logout"></app-button>
+
+		<div class="dashboard-triangle-crest">
+			<img src="images/menu-crest.png" />
+		</div>
+	</div>
+</div>

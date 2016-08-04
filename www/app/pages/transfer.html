@@ -1,0 +1,57 @@
+<!--
+    © Copyright 2016 IBM Corp.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<div ng-controller="TransferCtrl" title="Appointments" class="form-container">
+    <div class="form-panel">
+        <h3 class="vertical-margin"><label for="from">From account:</label></h3>
+        <div class="field-wrapper full-field">
+            <div class="field">
+                <div class="input">
+                    <select id="from" data-ng-model="from" class="dropdown">
+                        <option value="93495345" selected>Savings #93495345</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="vertical-margin"><label for="to">To account:</label></h3>
+        <div class="field-wrapper full-field">
+            <div class="field">
+                <div class="input">
+                    <select id="to" data-ng-model="to" class="dropdown">
+                        <option value="3429384">Savings #3429384</option>
+                        <option value="12429387">Savings #12429387</option>
+                        <option value="2394823">Credit #2394823</option>
+                        <option value="5345323">Credit #5345323</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <h3 class="vertical-margin"><label for="amount">Amount:</label></h3>
+        <div class="field-wrapper full-field">
+            <div class="field">
+                <div class="input">
+                    <input type="number" id="amount" data-ng-model="amount" />
+                </div>
+            </div>
+        </div>
+
+        <div>
+            <a class="button btn-large btn-default vertical-margin" data-ng-click="transfer()">Make a transfer</a>
+            <a class="button btn-large btn-gray" data-ng-click="back()">Cancel</a>
+        </div>
+    </div>
+</div>

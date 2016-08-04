@@ -1,0 +1,31 @@
+<!--
+    © Copyright 2016 IBM Corp.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<div ng-controller="TransactionsCtrl" title="Transactions">
+	<div class="item-list" id="account-list">
+		<div ng-repeat="t in transactions">
+			<div class="item">
+				<img class="transaction-icon" data-ng-src="images/icons/transaction/{{t.type}}.png"/>
+				<div class="toggle-icon" data-ng-click="toggle(t.id)" data-ng-class="{'close-icon': activeElement == t.id}"></div>
+				<span class="account-name">{{ t.type }}</span>
+				<span class="account-number">{{ t.date }}</span>
+				<span class="account-balance" data-ng-class="t.negative ? 'red' : 'green' ">{{ t.amount}}</span>
+			</div>
+			<div class="context-menu" data-ng-if="activeElement == t.id">
+				<a class="center">{{t.description}}</a>
+			</div>
+		</div>
+	</div>
+</div>

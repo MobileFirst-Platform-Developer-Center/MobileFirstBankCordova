@@ -1,0 +1,87 @@
+<!--
+    © Copyright 2016 IBM Corp.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<!DOCTYPE html>
+<html>
+<head>
+	<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+	<title>MobileFirst Banking</title>
+	<link href="css/app.css" rel="stylesheet"/>
+
+	<script src="js/lib/jquery-3.0.0.min.js"></script>
+	<script src="js/lib/angular-1.2.25.min.js"></script>
+	<script src="js/lib/angular-route-1.2.25.min.js"></script>
+
+	<script src="js/app.js"></script>
+	<script src="cordova.js"></script>
+</head>
+<body>
+
+<div class="page">
+	<div id="toolbar" data-ng-if="navigation">
+		<a id="back" data-ng-click="back()">&nbsp;</a>
+		<h1>{{title}}</h1>
+	</div>
+
+	<div class="app-content" data-ng-class="{'has-nav':navigation}" data-ng-view></div>
+
+	<div id="menubar" data-ng-if="navigation">
+		<a id="menu" data-ng-click="toggleMenu()">&nbsp;</a>
+	</div>
+
+	<div id="drawer" data-ng-if="navigation">
+		<div class="menu-container">
+			<app-button class="menu-button" href="#accounts" icon="menu/accounts" label="Accounts">
+			</app-button>
+
+			<app-button class="menu-button" href="#transactions" icon="menu/transactions" label="Transactions">
+			</app-button>
+
+			<app-button class="menu-button" href="#check-deposit" icon="menu/check-deposit" label="Check Deposit">
+			</app-button>
+
+			<app-button class="menu-button" href="#find-atm" icon="menu/find-atm" label="Find ATM">
+			</app-button>
+
+			<app-button class="menu-button" href="#appointments" icon="menu/appointments" label="Appointments">
+			</app-button>
+
+			<app-button class="menu-button" href="#logout" icon="menu/logout" label="Logout">
+			</app-button>
+		</div>
+	</div>
+</div>
+
+<script src="app/controllers/login.js"></script>
+<script src="app/controllers/logout.js"></script>
+<script src="app/controllers/dashboard.js"></script>
+<script src="app/controllers/accounts.js"></script>
+<script src="app/controllers/transactions.js"></script>
+<script src="app/controllers/find-atm.js"></script>
+<script src="app/controllers/check-deposit.js"></script>
+<script src="app/controllers/transfer.js"></script>
+<script src="app/controllers/appointments.js"></script>
+<script src="app/controllers/view-appointment.js"></script>
+
+<script src="app/elements/app-button.js"></script>
+
+<script src="js/services/util.js"></script>
+<script src="js/services/account-manager.js"></script>
+<script src="js/services/analytics.js"></script>
+<script src="js/services/map.js"></script>
+<script src="js/services/auth.js"></script>
+
+</body>
+</html>

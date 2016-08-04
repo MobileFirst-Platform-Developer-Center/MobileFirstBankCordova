@@ -1,0 +1,51 @@
+<!--
+    © Copyright 2016 IBM Corp.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+<div ng-controller="CheckDepositCtrl" title="Check Deposit">
+    <div class="deposit-step" id="check-front" data-ng-if="snapFront">
+        <p class="heading">Step 1 <strong>Front side photo</strong></p>
+        <p>Click on the camera icon to take a photo of the front side of the check you want to deposit</p>
+        <div class="image-container" data-ng-click="takePicture(0)">
+            <img class="check-photo" id="check-front-photo" data-ng-src="{{imgFront}}" src="images/icons/camera.png" />
+        </div>
+    </div>
+
+    <div class="deposit-step" id="check-back" data-ng-if="snapBack">
+        <p class="heading">Step 2 <strong>Back side photo</strong></p>
+        <p>Click on the camera icon to take a photo of the back side of the check you want to deposit</p>
+        <div class="image-container" data-ng-click="takePicture(1)">
+            <img class="check-photo" id="check-back-photo" data-ng-src="{{imgBack}}" src="images/icons/camera.png" />
+        </div>
+    </div>
+
+    <div class="deposit-step" id="deposit-confirm" data-ng-if="confirmDeposit">
+        <p class="step">Step 3 <strong>Confirm</strong></p>
+        <div class="check-preview-wrapper">
+            <div class="check-image-wrapper check-front-front">
+                <h4>Front</h4>
+                <img data-ng-src="{{imgFront}}" id="check-front-image" data-ng-click="takePicture(0)" />
+            </div>
+            <div class="check-image-wrapper check-back-photo">
+                <h4>Back</h4>
+                <img data-ng-src="{{imgBack}}" id="check-back-image" data-ng-click="takePicture(1)" />
+            </div>
+            <div class="clear"></div>
+        </div>
+        <p>Verify front and back photos of the check you wish to deposit and click Deposit button below</p>
+        <p>
+            <button class="button btn-large btn-default" data-ng-click="deposit()">Deposit</button>
+        </p>
+    </div>
+</div>

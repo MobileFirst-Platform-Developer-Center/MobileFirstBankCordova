@@ -1,0 +1,57 @@
+<!--
+    © Copyright 2016 IBM Corp.
+
+    Licensed under the Apache License, Version 2.0 (the "License");
+    you may not use this file except in compliance with the License.
+    You may obtain a copy of the License at
+
+        http://www.apache.org/licenses/LICENSE-2.0
+
+    Unless required by applicable law or agreed to in writing, software
+    distributed under the License is distributed on an "AS IS" BASIS,
+    WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+    See the License for the specific language governing permissions and
+    limitations under the License.
+-->
+
+<div ng-controller="AppointmentsCtrl" title="Appointments" class="form-container">
+	<div class="header-panel">
+		<h1 class="blue">Hello {{firstname}},</h1>
+		<span>When would you like to meet?</span>
+	</div>
+
+	<div class="form-panel">
+		<div class="field-wrapper">
+			<div class="field">
+				<div class="label">Date:</div>
+				<div class="input">
+					<input type="date" data-ng-model="date" class="dropdown"/>
+				</div>
+			</div>
+		</div>
+
+		<div class="field-wrapper">
+			<div class="field">
+				<div class="label">Time:</div>
+				<div class="input">
+					<input type="time" data-ng-model="time" class="dropdown"/>
+				</div>
+			</div>
+		</div>
+
+		<div class="field-wrapper">
+			<div class="field">
+				<div class="label">Locations:</div>
+				<div class="input">
+					<select data-ng-model="location" class="dropdown">
+						<option></option>
+						<option ng-repeat="location in locations">{{location}}</option>
+					</select>
+				</div>
+			</div>
+		</div>
+
+
+		<button data-ng-click="schedule()" class="button btn-large btn-default">Make an appointment</button>
+	</div>
+</div>
