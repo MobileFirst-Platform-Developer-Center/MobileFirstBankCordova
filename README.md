@@ -1,4 +1,4 @@
-IBM MobileFirst Platform Foundation
+IBM MobileFirst Foundation
 ===
 ## MobileFirstBanking
 A sample application demonstrating how to instrument an IBM MobileFirst application to gather analytics information regarding user behavior and device information.
@@ -13,7 +13,7 @@ A sample application demonstrating how to instrument an IBM MobileFirst applicat
 4. Back in the command-line, run the Cordova application by running the `cordova run` command.
 
 ### Supported Levels
-IBM MobileFirst Platform Foundation 8.0
+IBM MobileFirst Foundation 8.0
 
 ### License
 Copyright 2016 IBM Corp.
