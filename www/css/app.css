@@ -17,11 +17,13 @@
 	margin: 0;
 	padding: 0;
 
+	box-sizing: border-box;
+}
+
+*:not(input) {
 	/* Disable selection/copy in UIWebView */
 	-webkit-touch-callout: none;
 	-webkit-user-select: none;
-
-	box-sizing: border-box;
 }
 
 html, body {
